@@ -1,27 +1,24 @@
-﻿using GestionProjet.Models.Interfaces;
+﻿using EsimedGestionProjet.Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace GestionProjet.Models
+namespace EsimedGestionProjet.Models
 {
-    public class Project : IProject
+    class Milestone : IMilestone
     {
         public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public IUser User { get; set;}
-
-        public List<IRequirement> Requirements { get; set; }
-
         public List<ITask> Tasks { get; set; }
+        public string Label { get; set; }
+        public DateTime DeleveryDateEstimated { get; set; }
+        public DateTime RealDateEstimated { get; set; }
+        public IUser User { get; set; }
+        public DateTime TheoricCalculatedDate { get; set; }
+        public IProject Project { get; set; }
 
-        public List<IMilestone> Milestones { get; set; }
-
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDateTheorical { get; set; }
-
-        public DateTime EndDateReal { get; set; }
+        public bool IsFinished()
+        {
+            return false;
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GestionProjet.Models.Interfaces
+namespace EsimedGestionProjet.Models.Interfaces
 {
     public interface ITask
     {

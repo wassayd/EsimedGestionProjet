@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GestionProjet.Models.Interfaces
+namespace EsimedGestionProjet.Models.Interfaces
 {
     public interface IProject
     {

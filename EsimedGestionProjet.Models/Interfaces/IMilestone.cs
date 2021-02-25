@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GestionProjet.Models.Interfaces
+namespace EsimedGestionProjet.Models.Interfaces
 {
     public interface IMilestone
     {
@@ -9,15 +9,15 @@ namespace GestionProjet.Models.Interfaces
 
         List<ITask> Tasks { get; set; }
 
-        bool IsFinished { get; set; }
+        bool IsFinished();
 
-        string label { get; set; }
+        string Label { get; set; }
 
         DateTime DeleveryDateEstimated { get; set; }
 
         DateTime RealDateEstimated { get; set; }
 
-        IUser user { get; set; }
+        IUser User { get; set; }
 
         DateTime TheoricCalculatedDate { get; set; }
 
