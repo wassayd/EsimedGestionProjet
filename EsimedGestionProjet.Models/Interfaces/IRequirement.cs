@@ -4,14 +4,14 @@ namespace EsimedGestionProjet.Models.Interfaces
 {
     public interface IRequirement
     {
-        int Id { get; set; }
+        int Id { get; init; }
 
-        string description { get; set; }
+        string description { get; init; }
 
-        bool isFunctional { get; set; }
+        bool isFunctional { get; init; }
 
-        string RequirementNoneFunctional { get; set; }
+        string RequirementNoneFunctional { get; init; }
         
-        List<ITask> Tasks { get; set; }
+        List<ITask> Tasks { get; init; }
     }
 }

@@ -5,23 +5,23 @@ namespace EsimedGestionProjet.Models.Interfaces
 {
     public interface ITask
     {
-        int Id { get; set; }
+        int Id { get; init; }
 
-        string Label { get; set; }
+        string Label { get; init; }
 
-        string description { get; set; }
+        string description { get; init; }
 
-        IUser User { get; set; }
+        IUser User { get; init; }
 
-        List<IRequirement> Requirements { get; set; }
+        List<IRequirement> Requirements { get; init; }
 
-        DateTime StartDate { get; set; }
+        DateTime StartDate { get; init; }
 
-        float NbDay { get; set; }
+        float NbDay { get; init; }
 
-        IMilestone Milestone { get; set; }
+        IMilestone Milestone { get; init; }
 
-        Progression Progression { get; set; }
+        Progression Progression { get; init; }
     }
 
     public enum Progression

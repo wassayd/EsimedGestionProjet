@@ -5,12 +5,16 @@ using System.Text;
 
 namespace EsimedGestionProjet.Models
 {
-    class Requirement : IRequirement
+    public record Requirement : IRequirement
     {
-        public int Id { get; set; }
-        public string description { get; set; }
-        public bool isFunctional { get; set; }
-        public string RequirementNoneFunctional { get; set; }
-        public List<ITask> Tasks { get; set; }
+        public int Id { get; init; }
+
+        public string description { get; init; }
+
+        public bool isFunctional { get; init; }
+
+        public string RequirementNoneFunctional { get; init; }
+
+        public List<ITask> Tasks { get; init; }
     }
 }

@@ -5,16 +5,24 @@ using System.Text;
 
 namespace EsimedGestionProjet.Models
 {
-    class Task : ITask
+    public record Task : ITask
     {
-        public int Id { get; set; }
-        public string Label { get; set; }
-        public string description { get; set; }
-        public IUser User { get; set; }
-        public List<IRequirement> Requirements { get; set; }
-        public DateTime StartDate { get; set; }
-        public float NbDay { get; set; }
-        public IMilestone Milestone { get; set; }
-        public Progression Progression { get; set; }
+        public int Id { get; init; }
+
+        public string Label { get; init; }
+
+        public string description { get; init; }
+
+        public IUser User { get; init; }
+
+        public List<IRequirement> Requirements { get; init; }
+
+        public DateTime StartDate { get; init; }
+
+        public float NbDay { get; init; }
+
+        public IMilestone Milestone { get; init; }
+
+        public Progression Progression { get; init; }
     }
 }

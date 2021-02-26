@@ -5,23 +5,23 @@ namespace EsimedGestionProjet.Models.Interfaces
 {
     public interface IMilestone
     {
-        int Id { get; set; }
+        int Id { get; init; }
 
-        List<ITask> Tasks { get; set; }
+        List<ITask> Tasks { get; init; }
 
         bool IsFinished();
 
-        string Label { get; set; }
+        string Label { get; init; }
 
-        DateTime DeleveryDateEstimated { get; set; }
+        DateTime DeleveryDateEstimated { get; init; }
 
-        DateTime RealDateEstimated { get; set; }
+        DateTime RealDateEstimated { get; init; }
 
-        IUser User { get; set; }
+        IUser User { get; init; }
 
-        DateTime TheoricCalculatedDate { get; set; }
+        DateTime TheoricCalculatedDate { get; init; }
 
-        IProject Project { get; set; }
+        IProject Project { get; init; }
 
     }
 }

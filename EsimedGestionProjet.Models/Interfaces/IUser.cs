@@ -2,13 +2,13 @@
 {
     public interface IUser
     {
-        int Id { get; set; }
+        int Id { get; init; }
 
-        string trigram { get; set; }
+        string trigram { get; init; }
 
-        string FirstName { get; set; }
+        string FirstName { get; init; }
 
-        string LastName { get; set; }
+        string LastName { get; init; }
 
     }
 }

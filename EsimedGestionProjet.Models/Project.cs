@@ -5,16 +5,24 @@ using System.Text;
 
 namespace EsimedGestionProjet.Models
 {
-    class Project : IProject
+    public record Project : IProject
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public IUser User { get; set; }
-        public List<IRequirement> Requirements { get; set; }
-        public List<ITask> Tasks { get; set; }
-        public List<IMilestone> Milestones { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDateTheorical { get; set; }
-        public DateTime EndDateReal { get; set; }
+        public int Id { get; init; }
+
+        public string Name { get; init; }
+
+        public IUser User { get; init; }
+
+        public List<IRequirement> Requirements { get; init; }
+
+        public List<ITask> Tasks { get; init; }
+
+        public List<IMilestone> Milestones { get; init; }
+
+        public DateTime StartDate { get; init; }
+
+        public DateTime EndDateTheorical { get; init; }
+
+        public DateTime EndDateReal { get; init; }
     }
 }

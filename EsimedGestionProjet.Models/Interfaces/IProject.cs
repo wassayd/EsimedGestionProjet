@@ -6,23 +6,23 @@ namespace EsimedGestionProjet.Models.Interfaces
 {
     public interface IProject
     {
-        int Id { get; set; }
+        int Id { get; init; }
 
-        string Name { get; set; }
+        string Name { get; init; }
 
-        IUser User { get; set; }
+        IUser User { get; init; }
 
-        List<IRequirement> Requirements { get; set; }
+        List<IRequirement> Requirements { get; init; }
 
-        List<ITask> Tasks { get; set; }
+        List<ITask> Tasks { get; init; }
 
-        List<IMilestone> Milestones { get; set; } 
+        List<IMilestone> Milestones { get; init; } 
 
-        DateTime StartDate { get; set; }
+        DateTime StartDate { get; init; }
 
-        DateTime EndDateTheorical { get; set; }
+        DateTime EndDateTheorical { get; init; }
 
-        DateTime EndDateReal { get; set; }
+        DateTime EndDateReal { get; init; }
 
     }
 }
