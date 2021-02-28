@@ -6,7 +6,7 @@ namespace EsimedGestionProjet.Models.Interfaces
 {
     public interface IProject
     {
-        int Id { get; init; }
+        Guid Id { get; init; }
 
         string Name { get; init; }
 
@@ -22,7 +22,7 @@ namespace EsimedGestionProjet.Models.Interfaces
 
         DateTime EndDateTheorical { get; init; }
 
-        DateTime EndDateReal { get; init; }
+        DateTime? EndDateReal { get; init; }
 
     }
 }

@@ -1,11 +1,13 @@
 ﻿using EsimedGestionProjet.Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace EsimedGestionProjet.Models
+namespace EsimedGestionProjet.Dtos
 {
-    public record Project : IProject
+    public record ProjectDto
     {
         public Guid Id { get; init; }
 

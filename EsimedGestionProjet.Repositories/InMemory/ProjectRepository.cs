@@ -11,7 +11,7 @@ namespace EsimedGestionProjet.Repositories.InMemory
         {
             new Project
             {
-                Id = 1,
+                Id = Guid.NewGuid(),
                 Name = "Mon project",
                 EndDateReal = DateTime.UtcNow,
                 EndDateTheorical = DateTime.UtcNow,
@@ -24,7 +24,7 @@ namespace EsimedGestionProjet.Repositories.InMemory
 
             new Project
             {
-                Id = 2,
+                Id = Guid.NewGuid(),
                 Name = "Mon project 2",
                 EndDateReal = DateTime.UtcNow,
                 EndDateTheorical = DateTime.UtcNow,
@@ -36,14 +36,32 @@ namespace EsimedGestionProjet.Repositories.InMemory
             }
         };
 
+        public void Delete(Guid id)
+        {
+            var index = projects.FindIndex(x => x.Id == id);
+            projects.RemoveAt(index);
+        }
+
         public IEnumerable<Project> GetAll()
         {
             return projects;
         }
 
-        public Project GetById(int id)
+        public Project GetById(Guid id)
         {
             return projects.Where(project => project.Id == id).SingleOrDefault();
+        }
+
+        public void Insert(Project project)
+        {
+            projects.Add(project);
+        }
+
+        public void Update(Project project)
+        {
+            var index = projects.FindIndex(prj => prj.Id == project.Id);
+
+            projects[index] = project;
         }
     }
 }

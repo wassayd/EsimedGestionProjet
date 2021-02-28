@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EsimedGestionProjet.Models\EsimedGestionProjet.Models.csproj" />
+    <ProjectReference Include="..\EsimedGestionProjet.Services\EsimedGestionProjet.Services.csproj" />
+  </ItemGroup>
+
 </Project>

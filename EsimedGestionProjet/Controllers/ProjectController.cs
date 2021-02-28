@@ -1,4 +1,5 @@
-﻿using EsimedGestionProjet.Models;
+﻿using EsimedGestionProjet.Dtos;
+using EsimedGestionProjet.Models;
 using EsimedGestionProjet.Repositories;
 using EsimedGestionProjet.Repositories.InMemory;
 using Microsoft.AspNetCore.Mvc;
@@ -25,14 +26,17 @@ namespace EsimedGestionProjet.Controllers
 
         // GET: api/<ProjectController>
         [HttpGet]
-        public IEnumerable<Project> Get()
+        public IEnumerable<ProjectDto> Get()
         {
-            return inMemProjectRepository.GetAll();
+            //t
+            var projects = inMemProjectRepository.GetAll().Select(project => project.AsDto());
+
+            return projects;
         }
 
         // GET api/<ProjectController>/5
         [HttpGet("{id}")]
-        public ActionResult<Project> Get(int id)
+        public ActionResult<ProjectDto> Get(Guid id)
         {
             var project = inMemProjectRepository.GetById(id);
 
@@ -41,25 +45,68 @@ namespace EsimedGestionProjet.Controllers
                 return NotFound();
             }
 
-            return project;
+            return project.AsDto();
         }
 
         // POST api/<ProjectController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<ProjectDto> Post(CreateProjectDto projectDto)
         {
+            Project project = new()
+            {
+                Id = Guid.NewGuid(),
+                EndDateReal = null,
+                EndDateTheorical = (DateTime)projectDto.EndDateTheorical,
+                Milestones = null,
+                Name = projectDto.Name,
+                Requirements = null,
+                StartDate = DateTime.Now,
+                Tasks = null,
+                User = null
+            };
+
+            inMemProjectRepository.Insert(project);
+
+            return CreatedAtAction(nameof(Get), new { id = project.Id }, project.AsDto());
         }
 
         // PUT api/<ProjectController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put(Guid id, UpdateProjectDto projectDto) 
         {
+            var project = inMemProjectRepository.GetById(id);
+
+            if(project is null)
+            {
+                return NotFound();
+            }
+
+            //create copy with modification of name and date
+            Project updatedProject = project with
+            {
+                Name = projectDto.Name,
+                EndDateTheorical = (DateTime)projectDto.EndDateTheorical
+            };
+
+            inMemProjectRepository.Update(updatedProject);
+
+            return NoContent();
         }
 
         // DELETE api/<ProjectController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(Guid id)
         {
+            var project = inMemProjectRepository.GetById(id);
+
+            if (project is null)
+            {
+                return NotFound();
+            }
+
+            inMemProjectRepository.Delete(id);
+
+            return NoContent();
         }
     }
 }

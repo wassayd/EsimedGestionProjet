@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EsimedGestionProjet.Dtos\EsimedGestionProjet.Dtos.csproj" />
     <ProjectReference Include="..\EsimedGestionProjet.Models\EsimedGestionProjet.Models.csproj" />
     <ProjectReference Include="..\EsimedGestionProjet.Repositories\EsimedGestionProjet.Repositories.csproj" />
   </ItemGroup>

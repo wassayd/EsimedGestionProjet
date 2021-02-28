@@ -10,6 +10,12 @@ namespace EsimedGestionProjet.Repositories.InMemory
     {
         IEnumerable<T> GetAll();
 
-        T GetById(int id);
+        T GetById(Guid id);
+
+        void Insert(T obj);
+
+        void Update(T obj);
+
+        void Delete(Guid obj);
     }
 }

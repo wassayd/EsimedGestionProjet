@@ -5,6 +5,6 @@ namespace EsimedGestionProjet.Repositories.InMemory
 {
     public interface IProjectRepository : IRepository<Project>
     {
-   
+        
     }
 }
