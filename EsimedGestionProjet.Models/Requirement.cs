@@ -1,13 +1,12 @@
-﻿using EsimedGestionProjet.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EsimedGestionProjet.Models
 {
-    public record Requirement : IRequirement
+    public record Requirement
     {
-        public int Id { get; init; }
+        public Guid Id { get; init; }
 
         public string description { get; init; }
 
@@ -15,6 +14,6 @@ namespace EsimedGestionProjet.Models
 
         public string RequirementNoneFunctional { get; init; }
 
-        public List<ITask> Tasks { get; init; }
+        public List<Task> Tasks { get; init; }
     }
 }

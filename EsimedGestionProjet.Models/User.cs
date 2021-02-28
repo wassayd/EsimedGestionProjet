@@ -1,13 +1,12 @@
-﻿using EsimedGestionProjet.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EsimedGestionProjet.Models
 {
-    public record User : IUser
+    public record User 
     {
-        public int Id { get; init; }
+        public Guid Id { get; init; }
 
         public string FirstName { get; init; }
 

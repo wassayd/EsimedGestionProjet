@@ -1,15 +1,14 @@
-﻿using EsimedGestionProjet.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EsimedGestionProjet.Models
 {
-    public record Milestone : IMilestone
+    public record Milestone 
     {
-        public int Id { get; init; }
+        public Guid Id { get; init; }
 
-        public List<ITask> Tasks { get; init; }
+        public List<Task> Tasks { get; init; }
 
         public string Label { get; init; }
 
@@ -17,11 +16,11 @@ namespace EsimedGestionProjet.Models
 
         public DateTime RealDateEstimated { get; init; }
 
-        public IUser User { get; init; }
+        public User User { get; init; }
 
         public DateTime TheoricCalculatedDate { get; init; }
 
-        public IProject Project { get; init; }
+        public Project Project { get; init; }
 
         public bool IsFinished()
         {

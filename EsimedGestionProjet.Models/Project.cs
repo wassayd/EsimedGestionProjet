@@ -1,23 +1,22 @@
-﻿using EsimedGestionProjet.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EsimedGestionProjet.Models
 {
-    public record Project : IProject
+    public record Project
     {
         public Guid Id { get; init; }
 
         public string Name { get; init; }
 
-        public IUser User { get; init; }
+        public User User { get; init; }
 
-        public List<IRequirement> Requirements { get; init; }
+        public List<Requirement> Requirements { get; init; }
 
-        public List<ITask> Tasks { get; init; }
+        public List<Task> Tasks { get; init; }
 
-        public List<IMilestone> Milestones { get; init; }
+        public List<Milestone> Milestones { get; init; }
 
         public DateTime StartDate { get; init; }
 
