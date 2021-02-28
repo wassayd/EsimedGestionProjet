@@ -1,9 +1,6 @@
-﻿using EsimedGestionProjet.Models.Interfaces;
+﻿using EsimedGestionProjet.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EsimedGestionProjet.Dtos
 {
@@ -13,13 +10,13 @@ namespace EsimedGestionProjet.Dtos
 
         public string Name { get; init; }
 
-        public IUser User { get; init; }
+        public User User { get; init; }
 
-        public List<IRequirement> Requirements { get; init; }
+        public List<Requirement> Requirements { get; init; }
 
-        public List<ITask> Tasks { get; init; }
+        public List<Models.Task> Tasks { get; init; }
 
-        public List<IMilestone> Milestones { get; init; }
+        public List<Milestone> Milestones { get; init; }
 
         public DateTime StartDate { get; init; }
 

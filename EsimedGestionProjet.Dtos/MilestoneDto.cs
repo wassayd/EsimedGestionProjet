@@ -1,4 +1,4 @@
-﻿using EsimedGestionProjet.Models.Interfaces;
+﻿using EsimedGestionProjet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace EsimedGestionProjet.Dtos
 {
-    public record MilestoneDto : IMilestone
+    public record MilestoneDto
     {
-        public int Id { get; init; }
+        public Guid Id { get; init; }
 
-        public List<ITask> Tasks { get; init; }
+        public List<Models.Task> Tasks { get; init; }
 
         public string Label { get; init; }
 
@@ -19,11 +19,11 @@ namespace EsimedGestionProjet.Dtos
 
         public DateTime RealDateEstimated { get; init; }
 
-        public IUser User { get; init; }
+        public User User { get; init; }
 
         public DateTime TheoricCalculatedDate { get; init; }
 
-        public IProject Project { get; init; }
+        public Project Project { get; init; }
 
         public bool IsFinished()
         {

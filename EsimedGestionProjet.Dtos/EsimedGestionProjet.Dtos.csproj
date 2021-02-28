@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EsimedGestionProjet.Models\EsimedGestionProjet.Models.csproj" />
+    <ProjectReference Include="..\EsimedGestionProjet.Models\EsimedGestionProjet.DataAccess.csproj" />
     <ProjectReference Include="..\EsimedGestionProjet.Services\EsimedGestionProjet.Services.csproj" />
   </ItemGroup>
 
