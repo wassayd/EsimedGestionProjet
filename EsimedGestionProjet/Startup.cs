@@ -1,8 +1,11 @@
+using EsimedGestionProjet.Entities;
+using EsimedGestionProjet.Entities.DataAccess;
 using EsimedGestionProjet.Repositories.InMemory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +30,11 @@ namespace EsimedGestionProjet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DatabaseContext>(options => 
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("Default"));
+            });
+
             services.AddSingleton<IProjectRepository, ProjectRepository>();
 
             services.AddControllers();
@@ -56,6 +64,19 @@ namespace EsimedGestionProjet
             {
                 endpoints.MapControllers();
             });
+
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                try
+                {
+                    var context = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                    DataInitializer.SeedUserData(context).Wait();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
         }
     }
 }

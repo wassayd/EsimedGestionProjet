@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EsimedGestionProjet", "EsimedGestionProjet\EsimedGestionProjet.csproj", "{74310A7F-331D-4756-91D3-696E811A913E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EsimedGestionProjet.DataAccess", "EsimedGestionProjet.Models\EsimedGestionProjet.DataAccess.csproj", "{B73473CB-33D6-4C3B-B39D-64A62F0114A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EsimedGestionProjet.Entities", "EsimedGestionProjet.Models\EsimedGestionProjet.Entities.csproj", "{B73473CB-33D6-4C3B-B39D-64A62F0114A3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EsimedGestionProjet.Repositories", "EsimedGestionProjet.Repositories\EsimedGestionProjet.Repositories.csproj", "{4402EC56-95D4-443A-98CC-FCF03960E4E2}"
 	ProjectSection(ProjectDependencies) = postProject

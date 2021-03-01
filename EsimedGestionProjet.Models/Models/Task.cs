@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace EsimedGestionProjet.Models
@@ -7,21 +8,30 @@ namespace EsimedGestionProjet.Models
     public record Task
     {
         public Guid Id { get; init; }
-
+        
+        [Required]
         public string Label { get; init; }
 
+        [Required]
         public string description { get; init; }
 
+        [Required]
         public User User { get; init; }
 
-        public List<Requirement> Requirements { get; init; }
+        public List<Requirement> Requirements { get; init; } // pas obliger
 
-        public DateTime StartDate { get; init; }
+        public DateTime RealStartDate { get; init; } //start Date
 
-        public float NbDay { get; init; }
+        [Required]
+        public DateTime TheoricDateStart { get; init; }
 
-        public Milestone Milestone { get; init; }
+        [Required]
+        public float NbDay { get; init; } // charge
 
-        public Progression Progression { get; init; }
+        [Required]
+        public Project project { get; set; }
+
+        public Milestone Milestone { get; init; } // pas obliger
+
     }
 }
