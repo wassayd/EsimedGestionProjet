@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# cacher le dossier de migrations
+EsimedGestionProjet.Models/Migrations
