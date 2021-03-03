@@ -20,7 +20,7 @@ namespace EsimedGestionProjet.Dtos
 
         public DateTime StartDate { get; set; } = DateTime.Now;
 
-        public DateTime EndDateTheorical { get; set; }
+        public DateTime? EndDateTheorical { get; set; }
 
         public DateTime? EndDateReal { get; set; }
     }

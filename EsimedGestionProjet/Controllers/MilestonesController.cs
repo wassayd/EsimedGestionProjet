@@ -27,6 +27,9 @@ namespace EsimedGestionProjet.Controllers
         public async Task<ActionResult<IEnumerable<MilestoneDto>>> GetMilestone()
         {       
             return await _context.Milestone
+                .Include(m => m.Project)
+                .Include(m => m.Tasks)
+                .Include(m => m.User)
                 .Select(m => m.AsDto())
                 .ToListAsync();
         }
@@ -44,7 +47,12 @@ namespace EsimedGestionProjet.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MilestoneDto>> GetMilestone(Guid id)
         {
-            var milestone = await _context.Milestone.FindAsync(id);
+            var milestone = await _context.Milestone
+                .Include(m => m.Project)
+                .Include(m => m.Tasks)
+                .Include(m => m.User)
+                .FirstOrDefaultAsync()
+                ;
 
             if (milestone == null)
             {
@@ -138,7 +146,7 @@ namespace EsimedGestionProjet.Controllers
             _context.Milestone.Add(milestone);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMilestone", new { id = milestone.Id }, milestone.AsDto());
+            return CreatedAtAction("GetMilestone", new { id = milestone.Id }, milestone);
         }
 
         // DELETE: api/Milestones/5

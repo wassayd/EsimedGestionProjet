@@ -26,17 +26,17 @@ namespace EsimedGestionProjet.Controllers
         [HttpGet]
         public async Task<IEnumerable<ProjectDto>> GetProject()
         {
-            var projects = await _context.Project.ToListAsync();
-            var projectsDto = projects.Select(project => project.AsDto());
-
-            return projectsDto;
+            return await _context.Project
+                .Include(p => p.User)
+                .Select(project => project.AsDto())        
+                .ToListAsync();
         }
 
         // GET: api/Projects/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProjectDto>> GetProject(Guid id)
         {
-            Project project = await _context.Project.FindAsync(id);
+            Project project = await _context.Project.Where(p => p.Id == id).Include(p => p.User).FirstOrDefaultAsync();
             
             if (project == null)
             {
@@ -104,7 +104,7 @@ namespace EsimedGestionProjet.Controllers
             _context.Project.Add(project);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProject", new { id = project.Id }, project.AsDto());
+            return CreatedAtAction("GetProject", new { id = project.Id }, project);
         }
 
         // DELETE: api/Projects/5

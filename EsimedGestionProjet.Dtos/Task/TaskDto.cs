@@ -27,6 +27,6 @@ namespace EsimedGestionProjet.Dtos
 
         public ProjectDto Project { get; set; }
 
-        public MilestoneDto Milestone { get; init; } // pas obliger
+        public MilestoneDto Milestone { get; set; } // pas obliger
     }
 }

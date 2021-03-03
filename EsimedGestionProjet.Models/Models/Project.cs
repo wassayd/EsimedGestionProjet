@@ -16,16 +16,16 @@ namespace EsimedGestionProjet.Models
         [Required]
         public User User { get; set; } // le chef de projet ?
 
-        public List<Requirement> Requirements { get; set; }
+        public List<Requirement> Requirements { get; set; } = new();
 
-        public List<Task> Tasks { get; set; }
+        public List<Task> Tasks { get; set; } = new();
 
-        public List<Milestone> Milestones { get; set; }
+        public List<Milestone> Milestones { get; set; } = new();
 
         public DateTime StartDate { get; set; } = DateTime.Now;
         
-        [Required]
-        public DateTime EndDateTheorical { get; set; }
+        
+        public DateTime? EndDateTheorical { get; set; }
 
         public DateTime? EndDateReal { get; set; }
     }
