@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace EsimedGestionProjet.Dtos
 {
-    public record RequirementDto
+    public record UpdateRequirementDto
     {
-        public Guid Id { get; init; }
+        public string Description { get; init; }
 
-        public string description { get; init; }
-
-        public bool isFunctional { get; init; }
+        public bool IsFunctional { get; init; }
 
         public string RequirementNoneFunctional { get; init; }
-
-        public List<Models.Task> Tasks { get; init; }
     }
 }

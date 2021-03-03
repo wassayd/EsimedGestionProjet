@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EsimedGestionProjet.Entities.DataAccess;
 using EsimedGestionProjet.Models;
+using EsimedGestionProjet.Dtos;
 
 namespace EsimedGestionProjet.Controllers
 {
@@ -23,14 +24,14 @@ namespace EsimedGestionProjet.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUser()
         {
-            return await _context.User.ToListAsync();
+            return await _context.User.Select(x => x.AsDto()).ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(Guid id)
+        public async Task<ActionResult<UserDto>> GetUser(Guid id)
         {
             var user = await _context.User.FindAsync(id);
 
@@ -39,23 +40,29 @@ namespace EsimedGestionProjet.Controllers
                 return NotFound();
             }
 
-            return user;
+            return user.AsDto();
         }
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(Guid id, User user)
+        public async Task<IActionResult> PutUser(Guid id, UpdateUserDto userDto)
         {
-            if (id != user.Id)
+            var user = await _context.User.FindAsync(id);
+
+            if (user == null)
             {
-                return BadRequest();
+                return NotFound("User not found");
             }
 
             _context.Entry(user).State = EntityState.Modified;
 
             try
             {
+                user.FirstName = userDto.FirstName;
+                user.LastName = userDto.LastName;
+                user.Trigram = userDto.Trigram;
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -76,12 +83,19 @@ namespace EsimedGestionProjet.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<UserDto>> PostUser(CreateUserDto userDto)
         {
+            User user = new()
+            {
+                FirstName = userDto.FirstName,
+                LastName = userDto.LastName,
+                Trigram = userDto.Trigram
+            };
+
             _context.User.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { id = user.Id }, user.AsDto());
         }
 
         // DELETE: api/Users/5

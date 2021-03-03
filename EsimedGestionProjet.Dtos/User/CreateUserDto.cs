@@ -4,19 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EsimedGestionProjet.Services.CustomAttributes;
 
 namespace EsimedGestionProjet.Dtos
 {
-    
-    public record UpdateProjectDto 
+    public record CreateUserDto
     {
+        [Required]
+        public string FirstName { get; init; }
 
         [Required]
-        public string Name { get; init; }
+        public string LastName { get; init; }
 
         [Required]
-        [MinDate]
-        public DateTime? EndDateTheorical { get; init; }
+        public string Trigram { get; init; }
     }
 }

@@ -10,28 +10,28 @@ namespace EsimedGestionProjet.Models
         public Guid Id { get; init; }
         
         [Required]
-        public string Label { get; init; }
+        public string Label { get; set; }
 
         [Required]
-        public string description { get; init; }
+        public string Description { get; set; }
 
         [Required]
-        public User User { get; init; }
+        public User User { get; set; }
 
-        public List<Requirement> Requirements { get; init; } // pas obliger
+        public List<Requirement> Requirements { get; set; } // pas obliger
 
-        public DateTime RealStartDate { get; init; } //start Date
-
-        [Required]
-        public DateTime TheoricDateStart { get; init; }
+        public DateTime RealStartDate { get; set; } //start Date
 
         [Required]
-        public float NbDay { get; init; } // charge
+        public DateTime TheoricDateStart { get; set; }
 
         [Required]
-        public Project project { get; set; }
+        public float NbDay { get; set; } // charge
 
-        public Milestone Milestone { get; init; } // pas obliger
+        [Required]
+        public Project Project { get; set; }
+
+        public Milestone Milestone { get; set; } // pas obliger
 
     }
 }

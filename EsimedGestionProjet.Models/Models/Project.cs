@@ -11,22 +11,22 @@ namespace EsimedGestionProjet.Models
 
         [Required]
         [MaxLength(200)]
-        public string Name { get; init; }
+        public string Name { get; set; }
 
         [Required]
-        public User User { get; init; } // le chef de projet ?
+        public User User { get; set; } // le chef de projet ?
 
-        public List<Requirement> Requirements { get; init; }
+        public List<Requirement> Requirements { get; set; }
 
-        public List<Task> Tasks { get; init; }
+        public List<Task> Tasks { get; set; }
 
-        public List<Milestone> Milestones { get; init; }
+        public List<Milestone> Milestones { get; set; }
 
-        public DateTime StartDate { get; init; } = DateTime.Now;
+        public DateTime StartDate { get; set; } = DateTime.Now;
         
         [Required]
-        public DateTime EndDateTheorical { get; init; }
+        public DateTime EndDateTheorical { get; set; }
 
-        public DateTime? EndDateReal { get; init; }
+        public DateTime? EndDateReal { get; set; }
     }
 }

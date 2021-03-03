@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace EsimedGestionProjet.Dtos
 {
-    public record UserDto
+    public record UpdateUserDto
     {
-        public Guid Id { get; init; }
-
         public string FirstName { get; init; }
 
         public string LastName { get; init; }
 
-        public string trigram { get; init; }
+        public string Trigram { get; init; }
     }
 }

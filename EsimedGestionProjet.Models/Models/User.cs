@@ -11,13 +11,13 @@ namespace EsimedGestionProjet.Models
         public Guid Id { get; init; }
 
         [Required]
-        public string FirstName { get; init; }
+        public string FirstName { get; set; }
 
         [Required]
-        public string LastName { get; init; }
+        public string LastName { get; set; }
 
         [Required]
         [MaxLength(3)]
-        public string Trigram { get; init; }
+        public string Trigram { get; set; }
     }
 }

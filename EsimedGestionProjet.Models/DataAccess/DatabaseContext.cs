@@ -16,9 +16,11 @@ namespace EsimedGestionProjet.Entities.DataAccess
         public DbSet<Milestone> Milestone { get; set; }
         public DbSet<User> User { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        { 
-
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<User>()
+                .HasIndex(u => u.Trigram)
+                .IsUnique();
         }
 
     }

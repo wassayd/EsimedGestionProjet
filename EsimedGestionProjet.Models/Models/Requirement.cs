@@ -10,16 +10,16 @@ namespace EsimedGestionProjet.Models
         public Guid Id { get; init; }
 
         [Required]
-        public string description { get; init; }
+        public string Description { get; set; }
 
         [Required]
-        public bool isFunctional { get; init; }
+        public bool IsFunctional { get; set; }
 
-        public string RequirementNoneFunctional { get; init; }
+        public string RequirementNoneFunctional { get; set; }
 
-        public List<Task> Tasks { get; init; }
+        public List<Task> Tasks { get; set; }
 
         [Required]
-        public Project project { get; set; }
+        public Project Project { get; set; }
     }
 }
