@@ -35,6 +35,18 @@ namespace EsimedGestionProjet
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                        builder =>
+                        {
+                            builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                        });
+            });
+
             services.AddSingleton<IProjectRepository, ProjectRepository>();
 
             services.AddControllers();
@@ -61,6 +73,8 @@ namespace EsimedGestionProjet
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseEndpoints(endpoints =>
             {
