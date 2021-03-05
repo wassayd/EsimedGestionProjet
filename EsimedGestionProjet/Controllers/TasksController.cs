@@ -26,14 +26,22 @@ namespace EsimedGestionProjet.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TaskDto>>> GetTask()
         {
-            return await _context.Task.Select(x => x.AsDto()).ToListAsync();
+            return await _context.Task.Include(t => t.Project)
+                .Include(t => t.Milestone)
+                .Include(t => t.Project)
+                .Include(t => t.User)
+                .Select(x => x.AsDto()).ToListAsync();
         }
 
         // GET: api/Tasks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskDto>> GetTask(Guid id)
         {
-            var task = await _context.Task.FindAsync(id);
+            var task = await _context.Task.Where(t => t.Id == id)
+                .Include(t => t.Milestone)
+                .Include(t => t.Project)
+                .Include(t => t.User)
+                .FirstOrDefaultAsync();
 
             if (task == null)
             {
@@ -116,11 +124,15 @@ namespace EsimedGestionProjet.Controllers
             var milestone = await _context.Milestone.FindAsync(taskDto.Milestone);
             var requirements = new List<Requirement>();
 
-            foreach (var requirementId in taskDto.Requirements)
+            if (taskDto.Requirements.Count > 0)
             {
-                var requirement = await _context.Requirement.FindAsync(requirementId);
-                requirements.Add(requirement);
+                foreach (var requirementId in taskDto.Requirements)
+                {
+                    var requirement = await _context.Requirement.FindAsync(requirementId);
+                    requirements.Add(requirement);
+                }
             }
+            
 
             Models.Task task = new()
             {

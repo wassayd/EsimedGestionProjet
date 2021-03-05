@@ -45,11 +45,13 @@ namespace EsimedGestionProjet
             return new TaskDto
             {
                 Id = task.Id,
+                Requirements = task.Requirements.Select(r => r.Id).ToList(),
                 Description = task.Description,
                 Label = task.Label,
-                Milestone = task.Milestone.AsDto(),
+                Milestone = task.Milestone?.Id,
                 NbDay = task.NbDay,
-                Project = task.Project.AsDto()
+                Project = task.Project.Id,
+                User = task.User.AsDto()
             };
         }
 
@@ -71,7 +73,7 @@ namespace EsimedGestionProjet
                 Id = requirement.Id,
                 Description = requirement.Description,
                 isFunctional = requirement.IsFunctional,
-                Project = requirement.Project.AsDto(),
+                Project = requirement.Project.Id,
                 RequirementNoneFunctional = requirement.RequirementNoneFunctional,
                 Tasks = requirement.Tasks.Select(x => x.AsDto()).ToList()
             };

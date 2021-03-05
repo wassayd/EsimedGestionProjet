@@ -17,7 +17,7 @@ namespace EsimedGestionProjet.Dtos
 
         public UserDto User { get; init; }
 
-        public List<RequirementDto> Requirements { get; init; } // pas obliger
+        public List<Guid> Requirements { get; init; } = new(); // pas obliger
 
         public DateTime RealStartDate { get; init; } //start Date
 
@@ -25,8 +25,8 @@ namespace EsimedGestionProjet.Dtos
 
         public float NbDay { get; init; } // charge
 
-        public ProjectDto Project { get; set; }
+        public Guid Project { get; set; }
 
-        public MilestoneDto Milestone { get; set; } // pas obliger
+        public Guid? Milestone { get; set; } // pas obliger
     }
 }

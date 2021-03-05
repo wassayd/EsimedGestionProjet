@@ -28,6 +28,10 @@ namespace EsimedGestionProjet.Controllers
         {
             return await _context.Project
                 .Include(p => p.User)
+                .Include(p => p.Requirements)
+                .Include("Requirements.Tasks")
+                .Include(p => p.Tasks)
+                .Include("Tasks.User")
                 .Select(project => project.AsDto())        
                 .ToListAsync();
         }
@@ -36,7 +40,13 @@ namespace EsimedGestionProjet.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProjectDto>> GetProject(Guid id)
         {
-            Project project = await _context.Project.Where(p => p.Id == id).Include(p => p.User).FirstOrDefaultAsync();
+            Project project = await _context.Project.Where(p => p.Id == id)
+                .Include(p => p.User)
+                .Include(p => p.Requirements)
+                .Include("Requirements.Tasks")
+                .Include(p => p.Tasks)
+                .Include("Tasks.User")
+                .FirstOrDefaultAsync();
             
             if (project == null)
             {

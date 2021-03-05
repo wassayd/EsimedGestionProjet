@@ -12,11 +12,11 @@ namespace EsimedGestionProjet.Dtos
 
         public UserDto User { get; set; } // le chef de projet ?
 
-        public List<RequirementDto> Requirements { get; set; }
+        public List<RequirementDto> Requirements { get; set; } = new();
 
-        public List<TaskDto> Tasks { get; set; }
+        public List<TaskDto> Tasks { get; set; } = new();
 
-        public List<MilestoneDto> Milestones { get; set; }
+        public List<MilestoneDto> Milestones { get; set; } = new();
 
         public DateTime StartDate { get; set; } = DateTime.Now;
 

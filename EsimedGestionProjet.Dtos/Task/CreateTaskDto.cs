@@ -19,7 +19,7 @@ namespace EsimedGestionProjet.Dtos
         [Required]
         public Guid UserId { get; init; }
 
-        public List<Guid> Requirements { get; init; } // pas obliger
+        public List<Guid> Requirements { get; init; } = new(); // pas obliger
 
         [Required]
         public DateTime TheoricDateStart { get; init; }

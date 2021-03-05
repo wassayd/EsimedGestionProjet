@@ -16,8 +16,8 @@ namespace EsimedGestionProjet.Dtos
 
         public string RequirementNoneFunctional { get; init; }
 
-        public List<TaskDto> Tasks { get; init; }
+        public List<TaskDto> Tasks { get; init; } = new();
 
-        public ProjectDto Project { get; set; }
+        public Guid Project { get; set; } 
     }
 }

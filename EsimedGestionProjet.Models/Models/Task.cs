@@ -18,7 +18,7 @@ namespace EsimedGestionProjet.Models
         [Required]
         public User User { get; set; }
 
-        public List<Requirement> Requirements { get; set; } // pas obliger
+        public List<Requirement> Requirements { get; set; } = new(); // pas obliger
 
         public DateTime RealStartDate { get; set; } //start Date
 

@@ -17,7 +17,7 @@ namespace EsimedGestionProjet.Models
 
         public string RequirementNoneFunctional { get; set; }
 
-        public List<Task> Tasks { get; set; }
+        public List<Task> Tasks { get; set; } = new();
 
         [Required]
         public Project Project { get; set; }

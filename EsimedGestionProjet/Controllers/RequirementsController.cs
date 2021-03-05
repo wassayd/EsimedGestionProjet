@@ -26,14 +26,14 @@ namespace EsimedGestionProjet.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RequirementDto>>> GetRequirement()
         {
-            return await _context.Requirement.Select(r => r.AsDto()).ToListAsync();
+            return await _context.Requirement.Include(r => r.Project).Select(r => r.AsDto()).ToListAsync();
         }
 
         // GET: api/Requirements/5
         [HttpGet("{id}")]
         public async Task<ActionResult<RequirementDto>> GetRequirement(Guid id)
         {
-            var requirement = await _context.Requirement.FindAsync(id);
+            var requirement = await _context.Requirement.Where(r=> r.Id == id).Include(r => r.Project).FirstOrDefaultAsync();
 
             if (requirement == null)
             {
